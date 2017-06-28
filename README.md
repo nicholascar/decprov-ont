@@ -20,6 +20,10 @@ This ontology will be refered to as the DecProv ontology.
 Turtle format: [decprov.ttl](decprov.ttl)  
 HTML format: [decprov.html](decprov.html)  
 
+The canonical location of this ontology online is:  
+
+<http://promsns.org/def/decprov>
+
 
 ## License
 This ontology and all other content in this repository are licensed under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) (also [LICENSE](LICENSE)).
@@ -28,5 +32,5 @@ This ontology and all other content in this repository are licensed under the [C
 ## Authors and Contact
 **Nicholas Car**  
 CSIRO Land & Water  
-<nicholas.car@csiro.au> 
+<nicholas.car@csiro.au>  
 <http://orcid.org/0000-0002-8742-7730>
