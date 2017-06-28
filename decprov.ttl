@@ -1,0 +1,468 @@
+@prefix : <http://promsns.org/def/do#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://promsns.org/def/decprov> a owl:Ontology ;
+	owl:versionIRI <http://promsns.org/def/decprov> ;
+	rdfs:label "Decision ontology"^^xsd:string ;
+	dcterms:created "2017-06-28"^^xsd:date ;
+	dcterms:modified "2017-06-28"^^xsd:date ;
+	owl:versionInfo "v1.0"^^xsd:string ;
+	rdfs:comment """This ontology is a re-worked version of the [W3C Decisions and Decision-Making Incubator Group](https://www.w3.org/2005/Incubator/decision/)'s Decision Ontology (DO) which can be found at <https://github.com/nicholascar/decision-o>. It has been aligned with the W3C's [PROV ontology](https://www.w3.org/TR/prov-o/) since it is widely recognised that analysing the elements of decisions *post hoc* is an exercise in provenance."""@en ;
+	dcterms:description """This ontology is a re-worked version of the [W3C Decisions and Decision-Making Incubator Group](https://www.w3.org/2005/Incubator/decision/)'s Decision Ontology (DO) which can be found at <https://github.com/nicholascar/decision-o>. It has been aligned with the W3C's [PROV ontology](https://www.w3.org/TR/prov-o/) since it is widely recognised that analysing the elements of decisions *post hoc* is an exercise in provenance."""@en ;
+	dcterms:creator "Nicholas Car"^^xsd:string ;
+	dcterms:creator <http://orcid.org/0000-0002-8742-7730> ;
+	rdfs:seeAlso "The GitHub repository containing addition documentation: http://github.com/nicholascar/decprov-ont/"@en .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://promsns.org/def/decprov#has_answer
+
+<http://promsns.org/def/decprov#has_answer> a owl:ObjectProperty ;
+	owl:inverseOf <http://promsns.org/def/decprov#is_answer_for> ;
+	rdfs:domain <http://promsns.org/def/decprov#Question> ;
+	rdfs:range <http://promsns.org/def/decprov#Answer> ;
+	rdfs:label "has answer"@en .
+# 
+# http://promsns.org/def/decprov#has_consequence
+
+<http://promsns.org/def/decprov#has_consequence> a owl:ObjectProperty ;
+	owl:inverseOf <http://promsns.org/def/decprov#is_consequence_of> ;
+	rdfs:domain <http://promsns.org/def/decprov#Situation> ;
+	rdfs:range <http://promsns.org/def/decprov#Situation> ;
+	rdfs:label "has consequence"@en .
+# 
+# http://promsns.org/def/decprov#has_context
+
+<http://promsns.org/def/decprov#has_context> a owl:ObjectProperty ;
+	rdfs:subPropertyOf <http://promsns.org/def/decprov#occurs_in> ;
+	owl:inverseOf <http://promsns.org/def/decprov#is_context_of> ;
+	rdfs:range <http://promsns.org/def/decprov#Context> ;
+	rdfs:label "has context"@en .
+# 
+# http://promsns.org/def/decprov#has_criterion
+
+<http://promsns.org/def/decprov#has_criterion> a owl:ObjectProperty ;
+	rdfs:range <http://promsns.org/def/ro#Normative_value> ;
+	rdfs:label "has criterion"@en .
+# 
+# http://promsns.org/def/decprov#has_result
+
+<http://promsns.org/def/decprov#has_result> a owl:ObjectProperty ;
+	owl:inverseOf <http://promsns.org/def/decprov#is_result_of> ;
+	rdfs:label "has result"@en .
+# 
+# http://promsns.org/def/decprov#has_solution
+
+<http://promsns.org/def/decprov#has_solution> a owl:ObjectProperty ;
+	owl:inverseOf <http://promsns.org/def/decprov#is_solution_for> ;
+	rdfs:domain <http://promsns.org/def/decprov#Problem> ;
+	rdfs:label "has solution"@en .
+# 
+# http://promsns.org/def/decprov#includes
+
+<http://promsns.org/def/decprov#includes> a owl:ObjectProperty ;
+	rdfs:subPropertyOf <http://promsns.org/def/decprov#is_occurence_of> ;
+	owl:inverseOf <http://promsns.org/def/decprov#is_included_in> ;
+	rdfs:label "includes"@en .
+# 
+# http://promsns.org/def/decprov#indicates
+
+<http://promsns.org/def/decprov#indicates> a owl:ObjectProperty ;
+	owl:inverseOf <http://promsns.org/def/decprov#is_indicated_by> ;
+	rdfs:label "indicates"@en , "wskazuje"@pl .
+# 
+# http://promsns.org/def/decprov#initiates
+
+<http://promsns.org/def/decprov#initiates> a owl:ObjectProperty ;
+	owl:inverseOf <http://promsns.org/def/decprov#is_initiated_by> ;
+	rdfs:range <http://promsns.org/def/decprov#Process> ;
+	rdfs:label "initiates"@en .
+# 
+# http://promsns.org/def/decprov#involves_choosing
+
+<http://promsns.org/def/decprov#involves_choosing> a owl:ObjectProperty ;
+	rdfs:subPropertyOf <http://promsns.org/def/decprov#is_occurence_of> ;
+	rdfs:label "involves choosing"@en .
+# 
+# http://promsns.org/def/decprov#is_adressed_to
+
+<http://promsns.org/def/decprov#is_adressed_to> a owl:ObjectProperty ;
+	rdfs:label "is adressed to"@en .
+# 
+# http://promsns.org/def/decprov#is_answer_for
+
+<http://promsns.org/def/decprov#is_answer_for> a owl:ObjectProperty ;
+	rdfs:domain <http://promsns.org/def/decprov#Answer> ;
+	rdfs:range <http://promsns.org/def/decprov#Question> ;
+	rdfs:label "is answer for"@en .
+# 
+# http://promsns.org/def/decprov#is_consequence_of
+
+<http://promsns.org/def/decprov#is_consequence_of> a owl:ObjectProperty ;
+	rdfs:domain <http://promsns.org/def/decprov#Situation> ;
+	rdfs:range <http://promsns.org/def/decprov#Situation> ;
+	rdfs:label "is consequence of"@en .
+# 
+# http://promsns.org/def/decprov#is_consideration_of
+
+<http://promsns.org/def/decprov#is_consideration_of> a owl:ObjectProperty ;
+	owl:inverseOf <http://promsns.org/def/decprov#is_considered_during> ;
+	rdfs:domain <http://promsns.org/def/decprov#Process> ;
+	rdfs:label "is consideration of"@en .
+# 
+# http://promsns.org/def/decprov#is_considered_during
+
+<http://promsns.org/def/decprov#is_considered_during> a owl:ObjectProperty ;
+	rdfs:range <http://promsns.org/def/decprov#Process> ;
+	rdfs:label "is considered during"@en .
+# 
+# http://promsns.org/def/decprov#is_context_of
+
+<http://promsns.org/def/decprov#is_context_of> a owl:ObjectProperty ;
+	rdfs:subPropertyOf <http://promsns.org/def/decprov#is_occurence_of> .
+# 
+# http://promsns.org/def/decprov#is_included_in
+
+<http://promsns.org/def/decprov#is_included_in> a owl:ObjectProperty ;
+	rdfs:subPropertyOf <http://promsns.org/def/decprov#occurs_in> ;
+	rdfs:label "is included in"@en .
+# 
+# http://promsns.org/def/decprov#is_indicated_by
+
+<http://promsns.org/def/decprov#is_indicated_by> a owl:ObjectProperty ;
+	rdfs:label "is indicated by"@en .
+# 
+# http://promsns.org/def/decprov#is_initiated_by
+
+<http://promsns.org/def/decprov#is_initiated_by> a owl:ObjectProperty ;
+	rdfs:domain <http://promsns.org/def/decprov#Process> ;
+	rdfs:label "is initiated by"@en .
+# 
+# http://promsns.org/def/decprov#is_occurence_of
+
+<http://promsns.org/def/decprov#is_occurence_of> a owl:ObjectProperty .
+# 
+# http://promsns.org/def/decprov#is_question_for
+
+<http://promsns.org/def/decprov#is_question_for> a owl:ObjectProperty ;
+	rdfs:domain <http://promsns.org/def/decprov#Question> ;
+	rdfs:label "is question for"@en .
+# 
+# http://promsns.org/def/decprov#is_question_for_confirming
+
+<http://promsns.org/def/decprov#is_question_for_confirming> a owl:ObjectProperty ;
+	rdfs:subPropertyOf <http://promsns.org/def/decprov#is_question_for> ;
+	rdfs:domain <http://promsns.org/def/decprov#Question> ;
+	rdfs:label "is question for confirming"@en .
+# 
+# http://promsns.org/def/decprov#is_question_for_indicating
+
+<http://promsns.org/def/decprov#is_question_for_indicating> a owl:ObjectProperty ;
+	rdfs:subPropertyOf <http://promsns.org/def/decprov#is_question_for> ;
+	rdfs:domain <http://promsns.org/def/decprov#Question> ;
+	rdfs:label "is question for indicating"@en .
+# 
+# http://promsns.org/def/decprov#is_result_of
+
+<http://promsns.org/def/decprov#is_result_of> a owl:ObjectProperty .
+# 
+# http://promsns.org/def/decprov#is_solution_for
+
+<http://promsns.org/def/decprov#is_solution_for> a owl:ObjectProperty ;
+	rdfs:range <http://promsns.org/def/decprov#Problem> ;
+	rdfs:label "is solution for"@en .
+# 
+# http://promsns.org/def/decprov#occurs_in
+
+<http://promsns.org/def/decprov#occurs_in> a owl:ObjectProperty .
+# 
+# http://promsns.org/def/decprov#supposedly_same_as
+
+<http://promsns.org/def/decprov#supposedly_same_as> a owl:ObjectProperty , owl:SymmetricProperty ;
+	rdfs:comment "Renamed from 'is supposed to be identical with'."@en , "Using to indicate supposedly same individuals (like in the context of a question where someone suppose some individual has certain properties or when introducing some unverified statements)."@en ;
+	rdfs:label "supposedly same as"@en .
+# 
+# http://promsns.org/def/ro#has_criterion
+
+<http://promsns.org/def/ro#has_criterion> a owl:ObjectProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://promsns.org/def/decprov#indicates_boolean_value
+
+<http://promsns.org/def/decprov#indicates_boolean_value> a owl:DatatypeProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://promsns.org/def/decprov#Answer
+
+<http://promsns.org/def/decprov#Answer> a owl:Class ;
+	rdfs:subClassOf <http://promsns.org/def/decprov#Situation> , _:genid1 .
+
+_:genid1 a owl:Class ;
+	owl:unionOf _:genid4 .
+
+_:genid4 a rdf:List ;
+	rdf:first _:genid5 .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#indicates> ;
+	owl:someValuesFrom owl:Thing .
+
+_:genid4 rdf:rest _:genid2 .
+
+_:genid2 a rdf:List ;
+	rdf:first _:genid3 .
+
+_:genid3 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#indicates_boolean_value> ;
+	owl:someValuesFrom xsd:boolean .
+
+_:genid2 rdf:rest rdf:nil .
+
+<http://promsns.org/def/decprov#Answer> rdfs:subClassOf _:genid6 .
+
+_:genid6 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#is_answer_for> ;
+	owl:someValuesFrom <http://promsns.org/def/decprov#Question> .
+
+<http://promsns.org/def/decprov#Answer> rdfs:comment "Indication of something requested in a question."@en ;
+	rdfs:label "Answer"@en .
+# 
+# http://promsns.org/def/decprov#Context
+
+<http://promsns.org/def/decprov#Context> a owl:Class ;
+	rdfs:subClassOf <http://promsns.org/def/decprov#Situation> ;
+	rdfs:label "Context"@en .
+# 
+# http://promsns.org/def/decprov#Decision
+
+<http://promsns.org/def/decprov#Decision> a owl:Class ;
+	owl:equivalentClass _:genid7 .
+
+_:genid7 owl:intersectionOf _:genid10 .
+
+_:genid10 a rdf:List ;
+	rdf:first _:genid11 .
+
+_:genid11 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#indicates> ;
+	owl:someValuesFrom <http://promsns.org/def/decprov#Option> .
+
+_:genid10 rdf:rest _:genid8 .
+
+_:genid8 a rdf:List ;
+	rdf:first _:genid9 .
+
+_:genid9 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#is_result_of> ;
+	owl:someValuesFrom <http://promsns.org/def/decprov#Decision_making> .
+
+_:genid8 rdf:rest rdf:nil .
+
+_:genid7 a owl:Class .
+
+<http://promsns.org/def/decprov#Decision> rdfs:subClassOf <http://promsns.org/def/decprov#Situation> ;
+	rdfs:comment "Recognizing something as the right/appropriate/best possible solution to a question/problem. It can be a consequence of an objective evaluation of clearly defined criteria but also an intuition, emotion or other subjective factor."@en ;
+	rdfs:label "Decision"@en .
+# 
+# http://promsns.org/def/decprov#Decision_making
+
+<http://promsns.org/def/decprov#Decision_making> a owl:Class ;
+	rdfs:subClassOf <http://promsns.org/def/decprov#Process> , _:genid12 .
+
+_:genid12 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#is_consideration_of> ;
+	owl:someValuesFrom <http://promsns.org/def/decprov#Option> .
+
+<http://promsns.org/def/decprov#Decision_making> rdfs:subClassOf _:genid13 .
+
+_:genid13 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#is_initiated_by> ;
+	owl:someValuesFrom <http://promsns.org/def/decprov#Question_for_indicating> .
+
+<http://promsns.org/def/decprov#Decision_making> rdfs:comment """2011-10-13
+A complex process that starts with a question and may result in indication of a solution for the underlying problem. It is important to note that a decision-making is something substantially different than decision, which is an output of the process of deciding. Usually it can be represented by the following pattern:
+1. Decision-making starts with a question which is an utterance of some problem
+2. The decider gathers and analyzes some information
+3. The decider evaluates possible options (under some criteria).
+4. One of the options may get recognized as the right/appropriate/best possible solution for the initial question/problem or the decider may choose to restrain from choice. What justifies this act could be an objective evaluation of clearly defined criteria but also an intuition, emotion or other subjective factor.
+
+In most cases stages 2-3 consist of many (concurrent or sequential) actions, events, processes related to information gathering, processing, verifying etc. In some cases a decision-making can be viewed as a complex process involving many sub-decisions preceding the recognition of the initial problem solution. In our current work we have focused on the basic elements of the above pattern (the question, gathering information, considering options, choosing solution). It should be considered to what extent this ontology should support the modeling of correlated issues such as: information verification and retrieval etc."""@en ;
+	rdfs:label "Decision making"@en ;
+	rdfs:seeAlso <http://promsns.org/def/decprov#Decision> .
+# 
+# http://promsns.org/def/decprov#Option
+
+<http://promsns.org/def/decprov#Option> a owl:Class ;
+	owl:equivalentClass _:genid14 .
+
+_:genid14 owl:intersectionOf _:genid17 .
+
+_:genid17 a rdf:List ;
+	rdf:first _:genid18 .
+
+_:genid18 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#involves_choosing> ;
+	owl:someValuesFrom owl:Thing .
+
+_:genid17 rdf:rest _:genid15 .
+
+_:genid15 a rdf:List ;
+	rdf:first _:genid16 .
+
+_:genid16 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/ro#has_criterion> ;
+	owl:someValuesFrom <http://promsns.org/def/ro#Normative_value> .
+
+_:genid15 rdf:rest rdf:nil .
+
+_:genid14 a owl:Class .
+
+<http://promsns.org/def/decprov#Option> rdfs:subClassOf <http://promsns.org/def/decprov#Situation> ;
+	rdfs:comment """Option is a situation in which some entity appears as a possible choice in a decision-making process.
+
+Option has always related criteria which correspond to requirements, recommendations,obligations etc. Those criteria might be implied from some documents, agreements, formal regulations etc. but also from subjective preferences or feelings. For example choosing a car may have a criterion related to subjective color or brand preferneces.
+
+TODO: A set of entities for representing the criteria \"source\" may be a valuable addition to Decision-O, but it will require modeling a new set of concepts related to subjective phenomena like attitudes, preferences, emotions, intutions etc."""@en ;
+	rdfs:label "Opcja"@pl , "Option"@en ;
+	rdfs:seeAlso <http://promsns.org/def/decprov#Decision_making> .
+# 
+# http://promsns.org/def/decprov#Problem
+
+<http://promsns.org/def/decprov#Problem> a owl:Class ;
+	rdfs:subClassOf <http://promsns.org/def/decprov#Situation> ;
+	rdfs:label "Problem"@en .
+# 
+# http://promsns.org/def/decprov#Process
+
+<http://promsns.org/def/decprov#Process> a owl:Class ;
+	rdfs:label "Process"@en .
+# 
+# http://promsns.org/def/decprov#Question
+
+<http://promsns.org/def/decprov#Question> a owl:Class ;
+	rdfs:subClassOf <http://promsns.org/def/decprov#Situation> ;
+	rdfs:comment "A situation in which a person indicates a will for acquiring knowledge about something."@en ;
+	rdfs:label "Question"@en .
+# 
+# http://promsns.org/def/decprov#Question_for_confirming
+
+<http://promsns.org/def/decprov#Question_for_confirming> a owl:Class ;
+	owl:equivalentClass _:genid19 .
+
+_:genid19 owl:intersectionOf _:genid23 .
+
+_:genid23 a rdf:List ;
+	rdf:first _:genid24 .
+
+_:genid24 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#is_question_for_confirming> ;
+	owl:someValuesFrom owl:Thing .
+
+_:genid23 rdf:rest _:genid20 .
+
+_:genid20 a rdf:List ;
+	rdf:first _:genid21 .
+
+_:genid21 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#has_answer> ;
+	owl:allValuesFrom _:genid22 .
+
+_:genid22 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#indicates_boolean_value> ;
+	owl:someValuesFrom xsd:boolean .
+
+_:genid20 rdf:rest rdf:nil .
+
+_:genid19 a owl:Class .
+
+<http://promsns.org/def/decprov#Question_for_confirming> rdfs:subClassOf <http://promsns.org/def/decprov#Question> ;
+	rdfs:comment """A question containing a whole proposition, that is an utterance that could be true or false. It is answerd by confirming or denying that proposition ('yes/no question')
+
+Examples: Are you a vegetarian? Is Norway a member of UE?"""@en ;
+	rdfs:label "Question for confirming"@en .
+# 
+# http://promsns.org/def/decprov#Question_for_indicating
+
+<http://promsns.org/def/decprov#Question_for_indicating> a owl:Class ;
+	owl:equivalentClass _:genid25 .
+
+_:genid25 owl:intersectionOf _:genid29 .
+
+_:genid29 a rdf:List ;
+	rdf:first _:genid30 .
+
+_:genid30 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#is_question_for_indicating> ;
+	owl:someValuesFrom owl:Thing .
+
+_:genid29 rdf:rest _:genid26 .
+
+_:genid26 a rdf:List ;
+	rdf:first _:genid27 .
+
+_:genid27 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#has_answer> ;
+	owl:allValuesFrom _:genid28 .
+
+_:genid28 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#indicates> ;
+	owl:someValuesFrom owl:Thing .
+
+_:genid26 rdf:rest rdf:nil .
+
+_:genid25 a owl:Class .
+
+<http://promsns.org/def/decprov#Question_for_indicating> rdfs:subClassOf <http://promsns.org/def/decprov#Question> ;
+	rdfs:comment """A question demanding indication of some concept, thing or its property in order to be anwsered.
+
+Examples: What's your date of birth? What is the name of the Director of the W3C?"""@en ;
+	rdfs:label "Question for indicating"@en .
+# 
+# http://promsns.org/def/decprov#Question_for_indicating_solution
+
+<http://promsns.org/def/decprov#Question_for_indicating_solution> a owl:Class ;
+	rdfs:subClassOf <http://promsns.org/def/decprov#Question_for_indicating> , _:genid31 .
+
+_:genid31 a owl:Restriction ;
+	owl:onProperty <http://promsns.org/def/decprov#is_consequence_of> ;
+	owl:someValuesFrom <http://promsns.org/def/decprov#Problem> .
+
+<http://promsns.org/def/decprov#Question_for_indicating_solution> rdfs:label "Question for indicating solution"@en .
+# 
+# http://promsns.org/def/decprov#Situation
+
+<http://promsns.org/def/decprov#Situation> a owl:Class ;
+	rdfs:label "Situation"@en .
+# 
+# http://promsns.org/def/ro#Normative_value
+
+<http://promsns.org/def/ro#Normative_value> a owl:Class .
+# 
+# Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi
