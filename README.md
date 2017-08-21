@@ -1,5 +1,5 @@
 # DecProv-O
-The Decision/Provenance ontology
+The Decision Provenance ontology
 
 
 ## Introduction
@@ -19,13 +19,18 @@ Local copies:
 ## Examples
 *coming!*
 
+
+## Publications
+*coming!*
+
+
 ## License
 This ontology and all other content in this repository are licensed under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) (local copy of deed: [LICENSE](LICENSE)).
 
 
 ## Authors and Contact
-**Nicholas Car**
-*Data Architect*
-Geoscience Australia
-<nicholas.car@ga.gov.au>
+**Nicholas Car**  
+*Data Architect*  
+Geoscience Australia  
+<nicholas.car@ga.gov.au>  
 <http://orcid.org/0000-0002-8742-7730>  
