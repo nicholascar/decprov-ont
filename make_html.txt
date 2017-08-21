@@ -31,10 +31,17 @@ Things to do in order to create an HTML version of the ontology
     * add
 			<dl>
 				<dt>Further documentation & examples:</dt>
-				<dd><a href="http://github.com/nicholascar/dmn-ont">This ontology on GitHub</a></dd>
+				<dd><a href="http://github.com/nicholascar/decprov-ont">This ontology on GitHub</a></dd>
 			</dl>
 	after:
 			<dl>
 				<dt>Other visualisation:</dt>
 				<dd><a href="http://promsns.org/def/dmn.ttl">Ontology source</a></dd>
 			</dl>
+			
+* add ontology image
+	* after ToC, add
+	<div id="img">
+		<img src="decprov.png" alt="Image of all DecPROV classes">
+		<p><em>All of the DecPROV classes and their relationships to the basic PROV-O classes</em></p>
+	</div>

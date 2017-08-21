@@ -10,370 +10,96 @@
 <http://promsns.org/def/decprov> rdf:type owl:Ontology ;
                                   owl:versionIRI <http://promsns.org/def/decprov> ;
                                   owl:imports <http://www.w3.org/ns/prov-o> ;
-                                  rdfs:label "Decision ontology"^^xsd:string ;
-                                  dcterms:modified "2017-06-28"^^xsd:date ;
                                   dcterms:creator "Nicholas Car"^^xsd:string ;
                                   owl:versionInfo "v1.0"^^xsd:string ;
+                                  rdfs:label "Decision Provenance ontology (DecPROV)"^^xsd:string ;
+                                  rdfs:comment """This ontology is a reduced-in-scope version of the [W3C Decisions and Decision-Making Incubator Group](https://www.w3.org/2005/Incubator/decision/)'s Decision Ontology (DO) which can be found at <https://github.com/nicholascar/decision-o>. It has been re-worked to align entirely with the W3C's [PROV ontology](https://www.w3.org/TR/prov-o/) since it is widely recognised that analysing the elements of decisions *post hoc* is an exercise in provenance.
+
+Unlike the original DO, this ontology cannot be used for *normative* scenarios: it is only capable of recording decisions that have already been made (so-called *data-driven* use in the DO). This is because PROV, to which this ontology is completely mapped, does not have a templating system which can indicate what *should* occur in future scenarios.
+
+This ontology introduces only one new element for decision modelling over that which was present in the DO: an Agent which allows agency in decision making to be recorded."""@en ;
                                   dcterms:created "2017-06-28"^^xsd:date ;
                                   dcterms:creator <http://orcid.org/0000-0002-8742-7730> ;
-                                  dcterms:description "This ontology is a re-worked version of the [W3C Decisions and Decision-Making Incubator Group](https://www.w3.org/2005/Incubator/decision/)'s Decision Ontology (DO) which can be found at <https://github.com/nicholascar/decision-o>. It has been aligned with the W3C's [PROV ontology](https://www.w3.org/TR/prov-o/) since it is widely recognised that analysing the elements of decisions *post hoc* is an exercise in provenance."@en ;
                                   rdfs:seeAlso "The GitHub repository containing addition documentation: http://github.com/nicholascar/decprov-ont/"@en ;
-                                  rdfs:comment "This ontology is a re-worked version of the [W3C Decisions and Decision-Making Incubator Group](https://www.w3.org/2005/Incubator/decision/)'s Decision Ontology (DO) which can be found at <https://github.com/nicholascar/decision-o>. It has been aligned with the W3C's [PROV ontology](https://www.w3.org/TR/prov-o/) since it is widely recognised that analysing the elements of decisions *post hoc* is an exercise in provenance."@en .
+                                  dcterms:description """This ontology is a reduced-in-scope version of the [W3C Decisions and Decision-Making Incubator Group](https://www.w3.org/2005/Incubator/decision/)'s Decision Ontology (DO) which can be found at <https://github.com/nicholascar/decision-o>. It has been re-worked to align entirely with the W3C's [PROV ontology](https://www.w3.org/TR/prov-o/) since it is widely recognised that analysing the elements of decisions *post hoc* is an exercise in provenance.
 
-#################################################################
-#    Object Properties
-#################################################################
+Unlike the original DO, this ontology cannot be used for *normative* scenarios: it is only capable of recording decisions that have already been made (so-called *data-driven* use in the DO). This is because PROV, to which this ontology is completely mapped, does not have a templating system which can indicate what *should* occur in future scenarios.
 
-###  http://promsns.org/def/do#had_answer
-:had_answer rdf:type owl:ObjectProperty ;
-            owl:inverseOf :was_answer_for ;
-            rdfs:domain :Question ;
-            rdfs:range :Answer ;
-            rdfs:label "had answer"@en .
-
-
-###  http://promsns.org/def/do#had_consequence
-:had_consequence rdf:type owl:ObjectProperty ;
-                 owl:inverseOf :was_consequence_of ;
-                 rdfs:domain :Situation ;
-                 rdfs:range :Situation ;
-                 rdfs:label "had consequence"@en .
-
-
-###  http://promsns.org/def/do#had_context
-:had_context rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :occurs_in ;
-             owl:inverseOf :was_context_of ;
-             rdfs:range :Context ;
-             rdfs:label "had context"@en .
-
-
-###  http://promsns.org/def/do#had_criterion
-:had_criterion rdf:type owl:ObjectProperty ;
-               rdfs:label "had criterion"@en .
-
-
-###  http://promsns.org/def/do#had_result
-:had_result rdf:type owl:ObjectProperty ;
-            owl:inverseOf :was_result_of ;
-            rdfs:label "had result"@en .
-
-
-###  http://promsns.org/def/do#had_solution
-:had_solution rdf:type owl:ObjectProperty ;
-              owl:inverseOf :was_solution_for ;
-              rdfs:domain :Problem ;
-              rdfs:label "had solution"@en .
-
-
-###  http://promsns.org/def/do#includes
-:includes rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :was_occurence_of ;
-          owl:inverseOf :was_included_in ;
-          rdfs:label "includes"@en .
-
-
-###  http://promsns.org/def/do#indicates
-:indicates rdf:type owl:ObjectProperty ;
-           owl:inverseOf :was_indicated_by ;
-           rdfs:label "indicates"@en ,
-                      "wskazuje"@pl .
-
-
-###  http://promsns.org/def/do#initiates
-:initiates rdf:type owl:ObjectProperty ;
-           owl:inverseOf :was_initiated_by ;
-           rdfs:range :Process ;
-           rdfs:label "initiates"@en .
-
-
-###  http://promsns.org/def/do#involves_choosing
-:involves_choosing rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :was_occurence_of ;
-                   rdfs:label "involves choosing"@en .
-
-
-###  http://promsns.org/def/do#was_adressed_to
-:was_adressed_to rdf:type owl:ObjectProperty ;
-                rdfs:label "was adressed to"@en .
-
-
-###  http://promsns.org/def/do#was_answer_for
-:was_answer_for rdf:type owl:ObjectProperty ;
-               rdfs:domain :Answer ;
-               rdfs:range :Question ;
-               rdfs:label "was answer for"@en .
-
-
-###  http://promsns.org/def/do#was_consequence_of
-:was_consequence_of rdf:type owl:ObjectProperty ;
-                   rdfs:domain :Situation ;
-                   rdfs:range :Situation ;
-                   rdfs:label "was consequence of"@en .
-
-
-###  http://promsns.org/def/do#was_consideration_of
-:was_consideration_of rdf:type owl:ObjectProperty ;
-                     owl:inverseOf :was_considered_during ;
-                     rdfs:domain :Process ;
-                     rdfs:label "was consideration of"@en .
-
-
-###  http://promsns.org/def/do#was_considered_during
-:was_considered_during rdf:type owl:ObjectProperty ;
-                      rdfs:range :Process ;
-                      rdfs:label "was considered during"@en .
-
-
-###  http://promsns.org/def/do#was_context_of
-:was_context_of rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :was_occurence_of .
-
-
-###  http://promsns.org/def/do#was_included_in
-:was_included_in rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :occurs_in ;
-                rdfs:label "was included in"@en .
-
-
-###  http://promsns.org/def/do#was_indicated_by
-:was_indicated_by rdf:type owl:ObjectProperty ;
-                 rdfs:label "was indicated by"@en .
-
-
-###  http://promsns.org/def/do#was_initiated_by
-:was_initiated_by rdf:type owl:ObjectProperty ;
-                 rdfs:domain :Process ;
-                 rdfs:label "was initiated by"@en .
-
-
-###  http://promsns.org/def/do#was_occurence_of
-:was_occurence_of rdf:type owl:ObjectProperty .
-
-
-###  http://promsns.org/def/do#was_question_for
-:was_question_for rdf:type owl:ObjectProperty ;
-                 rdfs:domain :Question ;
-                 rdfs:label "was question for"@en .
-
-
-###  http://promsns.org/def/do#was_question_for_confirming
-:was_question_for_confirming rdf:type owl:ObjectProperty ;
-                            rdfs:subPropertyOf :was_question_for ;
-                            rdfs:domain :Question ;
-                            rdfs:label "was question for confirming"@en .
-
-
-###  http://promsns.org/def/do#was_question_for_indicating
-:was_question_for_indicating rdf:type owl:ObjectProperty ;
-                            rdfs:subPropertyOf :was_question_for ;
-                            rdfs:domain :Question ;
-                            rdfs:label "was question for indicating"@en .
-
-
-###  http://promsns.org/def/do#was_result_of
-:was_result_of rdf:type owl:ObjectProperty .
-
-
-###  http://promsns.org/def/do#was_solution_for
-:was_solution_for rdf:type owl:ObjectProperty ;
-                 rdfs:range :Problem ;
-                 rdfs:label "was solution for"@en .
-
-
-###  http://promsns.org/def/do#occurs_in
-:occurs_in rdf:type owl:ObjectProperty .
-
-
-###  http://promsns.org/def/do#supposedly_same_as
-:supposedly_same_as rdf:type owl:ObjectProperty ,
-                             owl:SymmetricProperty ;
-                    rdfs:comment "Renamed from 'was supposed to be identical with'."@en ,
-                                 "Using to indicate supposedly same individuals (like in the context of a question where someone suppose some individual has certain properties or when introducing some unverified statements)."@en ;
-                    rdfs:label "supposedly same as"@en .
-
-
-###  http://promsns.org/def/ro#had_criterion
-<http://promsns.org/def/ro#had_criterion> rdf:type owl:ObjectProperty .
-
-
-#################################################################
-#    Data properties
-#################################################################
-
-###  http://promsns.org/def/do#indicates_boolean_value
-:indicates_boolean_value rdf:type owl:DatatypeProperty .
-
+This ontology introduces only one new element for decision modelling over that which was present in the DO: an Agent which allows agency in decision making to be recorded."""@en ;
+                                  dcterms:modified "2017-08-21"@en .
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://promsns.org/def/decprov#Value
-<http://promsns.org/def/decprov#Value> rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
-
-
-###  http://promsns.org/def/do#Answer
+###  http://promsns.org/def/decprov#Answer
 :Answer rdf:type owl:Class ;
-        rdfs:subClassOf :Situation ,
-                        [ rdf:type owl:Class ;
-                          owl:unionOf ( [ rdf:type owl:Restriction ;
-                                          owl:onProperty :indicates ;
-                                          owl:someValuesFrom owl:Thing
-                                        ]
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :indicates_boolean_value ;
-                                          owl:someValuesFrom xsd:boolean
-                                        ]
-                                      )
+        rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty <http://www.w3.org/ns/prov#wasGeneratedBy> ;
+                          owl:someValuesFrom :OptionSelection
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :was_answer_for ;
+                          owl:onProperty <http://www.w3.org/ns/prov#wasInfluencedBy> ;
                           owl:someValuesFrom :Question
                         ] ;
-        rdfs:comment "Indication of something requested in a question."@en ;
+        owl:disjointWith :Decision ,
+                         :Question ;
+        rdfs:comment "A recorded answer to a Question"@en ;
         rdfs:label "Answer"@en .
 
 
-###  http://promsns.org/def/do#Context
-:Context rdf:type owl:Class ;
-         rdfs:subClassOf :Situation ;
-         rdfs:label "Context"@en .
-
-
-###  http://promsns.org/def/do#Decision
+###  http://promsns.org/def/decprov#Decision
 :Decision rdf:type owl:Class ;
-          owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :indicates ;
-                                                       owl:someValuesFrom :Option
-                                                     ]
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :was_result_of ;
-                                                       owl:someValuesFrom :Decision_making
-                                                     ]
-                                                   ) ;
-                                rdf:type owl:Class
-                              ] ;
-          rdfs:subClassOf :Situation ;
-          rdfs:comment "Recognizing something as the right/appropriate/best possible solution to a question/problem. It can be a consequence of an objective evaluation of clearly defined criteria but also an intuition, emotion or other subjective factor."@en ;
+          rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+          rdfs:comment "The consequence of a DecisionMaking Activity: a recorded outcome"@en ;
           rdfs:label "Decision"@en .
 
 
-###  http://promsns.org/def/do#Decision_making
-:Decision_making rdf:type owl:Class ;
-                 rdfs:subClassOf :Process ,
+###  http://promsns.org/def/decprov#DecisionMaking
+:DecisionMaking rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.w3.org/ns/prov#Activity> ;
+                owl:disjointWith :OptionSelection ;
+                rdfs:comment "A temporal event in which decision processes are undertaken, such as initiating sub-questions for the question to be answered, consideration of options etc."@en ;
+                rdfs:label "Decision Making"@en .
+
+
+###  http://promsns.org/def/decprov#OptionSelection
+:OptionSelection rdf:type owl:Class ;
+                 rdfs:subClassOf <http://www.w3.org/ns/prov#Activity> ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :was_consideration_of ;
-                                   owl:someValuesFrom :Option
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :was_initiated_by ;
-                                   owl:someValuesFrom :Question_for_indicating
+                                   owl:onProperty <http://www.w3.org/ns/prov#wasStartedBy> ;
+                                   owl:someValuesFrom :Question
                                  ] ;
-                 rdfs:comment """2011-10-13
-A complex process that starts with a question and may result in indication of a solution for the underlying problem. It is important to note that a decision-making is something substantially different than decision, which is an output of the process of deciding. Usually it can be represented by the following pattern:
-1. Decision-making starts with a question which is an utterance of some problem
-2. The decider gathers and analyzes some information
-3. The decider evaluates possible options (under some criteria).
-4. One of the options may get recognized as the right/appropriate/best possible solution for the initial question/problem or the decider may choose to restrain from choice. What justifies this act could be an objective evaluation of clearly defined criteria but also an intuition, emotion or other subjective factor.
+                 rdfs:comment """Option Selection is a process (prov:Activity) through which a decision-making Agent selects something.
 
-In most cases stages 2-3 consist of many (concurrent or sequential) actions, events, processes related to information gathering, processing, verifying etc. In some cases a decision-making can be viewed as a complex process involving many sub-decisions preceding the recognition of the initial problem solution. In our current work we have focused on the basic elements of the above pattern (the question, gathering information, considering options, choosing solution). It should be considered to what extent this ontology should support the modeling of correlated issues such as: information verification and retrieval etc."""@en ;
-                 rdfs:label "Decision making"@en ;
-                 rdfs:seeAlso :Decision .
+At least two Option Selection Activities, possibly more, must be run in parrallel by an Agent and at least one must yield an outcome in order for a Question to be answered."""@en ;
+                 rdfs:label "OptionSelection"@en ,
+                            "Wybór opcji"@pl ;
+                 rdfs:seeAlso :Decision_making .
 
 
-###  http://promsns.org/def/do#Option
-:Option rdf:type owl:Class ;
-        rdfs:subClassOf :Situation ;
-        rdfs:comment """Option is a situation in which some entity appears as a possible choice in a decision-making process.
-
-Option has always related criteria which correspond to requirements, recommendations,obligations etc. Those criteria might be implied from some documents, agreements, formal regulations etc. but also from subjective preferences or feelings. For example choosing a car may have a criterion related to subjective color or brand preferneces.
-
-TODO: A set of entities for representing the criteria \"source\" may be a valuable addition to Decision-O, but it will require modeling a new set of concepts related to subjective phenomena like attitudes, preferences, emotions, intutions etc."""@en ;
-        rdfs:label "Opcja"@pl ,
-                   "Option"@en ;
-        rdfs:seeAlso :Decision_making .
-
-
-###  http://promsns.org/def/do#Problem
-:Problem rdf:type owl:Class ;
-         rdfs:subClassOf :Situation ;
-         rdfs:label "Problem"@en .
-
-
-###  http://promsns.org/def/do#Process
-:Process rdf:type owl:Class ;
-         rdfs:subClassOf <http://www.w3.org/ns/prov#Activity> ;
-         rdfs:label "Process"@en .
-
-
-###  http://promsns.org/def/do#Question
+###  http://promsns.org/def/decprov#Question
 :Question rdf:type owl:Class ;
-          rdfs:subClassOf :Situation ;
-          rdfs:comment "A situation in which a person indicates a will for acquiring knowledge about something."@en ;
+          rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+          rdfs:comment "A recorded question"@en ;
           rdfs:label "Question"@en .
 
 
-###  http://promsns.org/def/do#Question_for_confirming
-:Question_for_confirming rdf:type owl:Class ;
-                         owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty :was_question_for_confirming ;
-                                                                      owl:someValuesFrom owl:Thing
-                                                                    ]
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty :had_answer ;
-                                                                      owl:allValuesFrom [ rdf:type owl:Restriction ;
-                                                                                          owl:onProperty :indicates_boolean_value ;
-                                                                                          owl:someValuesFrom xsd:boolean
-                                                                                        ]
-                                                                    ]
-                                                                  ) ;
-                                               rdf:type owl:Class
-                                             ] ;
-                         rdfs:subClassOf :Question ;
-                         rdfs:comment """A question containing a whole proposition, that is an utterance that could be true or false. It is answerd by confirming or denying that proposition ('yes/no question')
-
-Examples: Are you a vegetarian? Is Norway a member of UE?"""@en ;
-                         rdfs:label "Question for confirming"@en .
+###  http://promsns.org/def/do#Requirement
+:Requirement rdf:type owl:Class ;
+             rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+             rdfs:comment "Requirements require something from an OptionSelection Activity. They indicate their requirement with a set (a class) of objects. They are then satisified by the presense of an onject within that class. Multiple Requirements can be intersected to require very specific OptionSelection outcomes."@en ;
+             rdfs:label "Requirement"@en .
 
 
-###  http://promsns.org/def/do#Question_for_indicating
-:Question_for_indicating rdf:type owl:Class ;
-                         owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty :was_question_for_indicating ;
-                                                                      owl:someValuesFrom owl:Thing
-                                                                    ]
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty :had_answer ;
-                                                                      owl:allValuesFrom [ rdf:type owl:Restriction ;
-                                                                                          owl:onProperty :indicates ;
-                                                                                          owl:someValuesFrom owl:Thing
-                                                                                        ]
-                                                                    ]
-                                                                  ) ;
-                                               rdf:type owl:Class
-                                             ] ;
-                         rdfs:subClassOf :Question ;
-                         rdfs:comment """A question demanding indication of some concept, thing or its property in order to be anwsered.
+#################################################################
+#    Individuals
+#################################################################
 
-Examples: What's your date of birth? What is the name of the Director of the W3C?"""@en ;
-                         rdfs:label "Question for indicating"@en .
-
-
-###  http://promsns.org/def/do#Question_for_indicating_solution
-:Question_for_indicating_solution rdf:type owl:Class ;
-                                  rdfs:subClassOf :Question_for_indicating ,
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :was_consequence_of ;
-                                                    owl:someValuesFrom :Problem
-                                                  ] ;
-                                  rdfs:label "Question for indicating solution"@en .
-
-
-###  http://promsns.org/def/do#Situation
-:Situation rdf:type owl:Class ;
-           rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
-           rdfs:label "Situation"@en .
+###  http://promsns.org/def/do#DecisionMaker
+:DecisionMaker rdf:type owl:NamedIndividual ,
+                        <http://www.w3.org/ns/prov#Role> .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
