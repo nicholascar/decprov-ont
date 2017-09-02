@@ -16,12 +16,16 @@ Local copies:
 * RDF Turtle: [decprov.ttl](decprov.ttl)
 
 
+## Modelling description
+See [MODELLING](MODELING.md) for a description of the choices made about classes in DecPROV, including why certain Decision Ontology classes were included, excluded or changed.
+
+
 ## Examples
-*coming!*
+See [EXAMPLES](EXAMPLES.md).
 
 
 ## Publications
-*coming!*
+* [Modelling causes for actions with the Decision and PROV ontologies (MODSIM 2017 conference)](http://github.com/nicholascar/decprov-ont/blob/master/references/Car2017-Modelling-causes-for-actions-with-the-Decision-and-PROV-ontologies.pdf)
 
 
 ## License
