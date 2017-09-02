@@ -17,7 +17,7 @@ Local copies:
 
 
 ## Ontology class diagram
-![](images/decprov.png)
+![](images/decprov.png)  
 All relationships are PROV-O relationships
 
 ## Modelling description
