@@ -16,8 +16,12 @@ Local copies:
 * RDF Turtle: [decprov.ttl](decprov.ttl)
 
 
+## Ontology class diagram
+![](images/decprov.png)
+All relationships are PROV-O relationships
+
 ## Modelling description
-See [MODELLING](MODELING.md) for a description of the choices made about classes in DecPROV, including why certain Decision Ontology classes were included, excluded or changed.
+See [MODELLING](MODELLING.md) for a description of the choices made about classes in DecPROV, including why certain Decision Ontology classes were included, excluded or changed.
 
 
 ## Examples
