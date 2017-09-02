@@ -11,8 +11,10 @@
                                   owl:versionIRI <http://promsns.org/def/decprov> ;
                                   owl:imports <http://www.w3.org/ns/prov-o> ;
                                   dcterms:creator "Nicholas Car"^^xsd:string ;
-                                  owl:versionInfo "v1.0"^^xsd:string ;
+                                  owl:priorVersion "1.0"^^xsd:string ;
                                   rdfs:label "Decision Provenance ontology (DecPROV)"^^xsd:string ;
+                                  owl:versionInfo "1.1"^^xsd:string ;
+                                  dcterms:modified "2017-09-01"@en ;
                                   rdfs:comment """This ontology is a reduced-in-scope version of the [W3C Decisions and Decision-Making Incubator Group](https://www.w3.org/2005/Incubator/decision/)'s Decision Ontology (DO) which can be found at <https://github.com/nicholascar/decision-o>. It has been re-worked to align entirely with the W3C's [PROV ontology](https://www.w3.org/TR/prov-o/) since it is widely recognised that analysing the elements of decisions *post hoc* is an exercise in provenance.
 
 Unlike the original DO, this ontology cannot be used for *normative* scenarios: it is only capable of recording decisions that have already been made (so-called *data-driven* use in the DO). This is because PROV, to which this ontology is completely mapped, does not have a templating system which can indicate what *should* occur in future scenarios.
@@ -25,14 +27,13 @@ This ontology introduces only one new element for decision modelling over that w
 
 Unlike the original DO, this ontology cannot be used for *normative* scenarios: it is only capable of recording decisions that have already been made (so-called *data-driven* use in the DO). This is because PROV, to which this ontology is completely mapped, does not have a templating system which can indicate what *should* occur in future scenarios.
 
-This ontology introduces only one new element for decision modelling over that which was present in the DO: an Agent which allows agency in decision making to be recorded."""@en ;
-                                  dcterms:modified "2017-08-21"@en .
+This ontology introduces only one new element for decision modelling over that which was present in the DO: an Agent which allows agency in decision making to be recorded."""@en .
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://promsns.org/def/decprov#Answer
+###  http://promsns.org/def/do#Answer
 :Answer rdf:type owl:Class ;
         rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ,
                         [ rdf:type owl:Restriction ;
@@ -43,20 +44,12 @@ This ontology introduces only one new element for decision modelling over that w
                           owl:onProperty <http://www.w3.org/ns/prov#wasInfluencedBy> ;
                           owl:someValuesFrom :Question
                         ] ;
-        owl:disjointWith :Decision ,
-                         :Question ;
+        owl:disjointWith :Question ;
         rdfs:comment "A recorded answer to a Question"@en ;
         rdfs:label "Answer"@en .
 
 
-###  http://promsns.org/def/decprov#Decision
-:Decision rdf:type owl:Class ;
-          rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
-          rdfs:comment "The consequence of a DecisionMaking Activity: a recorded outcome"@en ;
-          rdfs:label "Decision"@en .
-
-
-###  http://promsns.org/def/decprov#DecisionMaking
+###  http://promsns.org/def/do#DecisionMaking
 :DecisionMaking rdf:type owl:Class ;
                 rdfs:subClassOf <http://www.w3.org/ns/prov#Activity> ;
                 owl:disjointWith :OptionSelection ;
@@ -64,7 +57,7 @@ This ontology introduces only one new element for decision modelling over that w
                 rdfs:label "Decision Making"@en .
 
 
-###  http://promsns.org/def/decprov#OptionSelection
+###  http://promsns.org/def/do#OptionSelection
 :OptionSelection rdf:type owl:Class ;
                  rdfs:subClassOf <http://www.w3.org/ns/prov#Activity> ,
                                  [ rdf:type owl:Restriction ;
@@ -79,7 +72,7 @@ At least two Option Selection Activities, possibly more, must be run in parralle
                  rdfs:seeAlso :Decision_making .
 
 
-###  http://promsns.org/def/decprov#Question
+###  http://promsns.org/def/do#Question
 :Question rdf:type owl:Class ;
           rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
           rdfs:comment "A recorded question"@en ;
