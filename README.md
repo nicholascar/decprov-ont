@@ -3,7 +3,13 @@ The Decision Provenance ontology
 
 
 ## Introduction
-This ontology is derived from the [W3C Decisions and Decision-Making Incubator Group](https://www.w3.org/2005/Incubator/decision/)'s Decision Ontology (DO) which can be found at <https://github.com/nicholascar/decision-o>. It has been aligned with the W3C's [PROV ontology](https://www.w3.org/TR/prov-o/) since it is widely recognised that analysing the elements of decisions *post hoc* is an exercise in provenance.
+This ontology is for modelling decisions and thus the causes for actions or the use or generation of things. It allows for a better understanding of *why* something might have taken place, have been used or produced than the more generic [PROV ontology](https://www.w3.org/TR/prov-o/), on which it is mainly based, does.  
+
+The specialised decision modelling elements of this ontology have been derived from the [W3C Decisions and Decision-Making Incubator Group](https://www.w3.org/2005/Incubator/decision/)'s Decision Ontology (DO) which can be found at <https://github.com/nicholascar/decision-o>. Many DO classes have been aligned with the PROV-O since it is widely recognised that analysing the elements of decisions *post hoc* is an exercise in provenance.
+
+Unlike the original DO, this ontology cannot be used for *normative* scenarios: it is only capable of recording decisions that have already been made (so-called *data-driven* use in the DO). This is because PROV does not have a templating system which can indicate what *should* occur in future scenarios.
+
+This ontology introduces only one new element for decision modelling over that which was present in the DO: an Agent which allows agency in decision making to be recorded.
 
 
 ## Ontology document
