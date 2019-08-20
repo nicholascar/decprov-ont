@@ -24,7 +24,7 @@ Local copies:
 
 
 ## Ontology class diagram
-![](images/decprov.svg)  
+![](decprov.svg)  
 **Figure 1**: An Overview of the DecPROV classes and main relationships**
 
 ## Modelling description
