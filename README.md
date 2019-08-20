@@ -11,6 +11,7 @@ Unlike the original DO, this ontology cannot be used for *normative* scenarios: 
 
 This ontology introduces only one new element for decision modelling over that which was present in the DO: an Agent which allows agency in decision making to be recorded.
 
+NOTE: this ontology is now in Version 2.0 release however not all examples are updated to match the new version's modelling.
 
 ## Ontology document
 Namespace location:
@@ -23,8 +24,8 @@ Local copies:
 
 
 ## Ontology class diagram
-![](images/decprov.png)  
-All relationships are PROV-O relationships
+![](images/decprov.svg)  
+**Figure 1**: An Overview of the DecPROV classes and main relationships**
 
 ## Modelling description
 See [MODELLING](MODELLING.md) for a description of the choices made about classes in DecPROV, including why certain Decision Ontology classes were included, excluded or changed.
@@ -42,9 +43,10 @@ See [EXAMPLES](EXAMPLES.md).
 This ontology and all other content in this repository are licensed under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) (local copy of deed: [LICENSE](LICENSE)).
 
 
-## Authors and Contact
+## Contacts
 **Nicholas Car**  
-*Data Architect*  
-Geoscience Australia  
-<nicholas.car@ga.gov.au>  
+*Data Systems Architect*  
+SURROUND Australia Pty Ltd  
+*(formerly of [Geoscience Australia](http://www.ga.gov.au) & [CSIRO](https://www.csiro.au))*  
+<nicholas.car@surroundaustralia.com>  
 <http://orcid.org/0000-0002-8742-7730>  
